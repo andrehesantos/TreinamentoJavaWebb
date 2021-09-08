@@ -37,7 +37,7 @@ public class DAOCliente {
         }
     }
     
-    public List<Cliente> buscaClientes(){
+    public ArrayList<Cliente> buscaClientes(){
         String sql = "SELECT * FROM Clientes";
         try{
             st = conn.createStatement();

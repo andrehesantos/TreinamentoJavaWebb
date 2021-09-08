@@ -12,7 +12,7 @@
 <!DOCTYPE html>
 <html>
     <%
-        List<Cliente> result = new ArrayList<Cliente>();  
+        ArrayList<Cliente> result = new ArrayList<Cliente>();  
         DAOCliente cld = new DAOCliente();
         Cliente cli = new Cliente();
         result = cld.buscaClientes();
@@ -29,9 +29,9 @@
                    cli = result.get(i);
             %>            
             <tr>
-                <th><%=cli.getId()%></th>
-                <th><%=cli.getNome()%></th>
-                <th><%=cli.getEmail()%></th>
+                <td><%=cli.getId()%></td>
+                <td><%=cli.getNome()%></td>
+                <td><%=cli.getEmail()%></td>
             </tr>
         <%
                 } 
