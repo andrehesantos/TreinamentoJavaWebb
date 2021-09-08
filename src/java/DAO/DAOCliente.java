@@ -16,6 +16,9 @@ public class DAOCliente {
     
     private Connection conn;
     private PreparedStatement stmt;
+    private Statement st;
+    private ResultSet rs;
+    private ArrayList<Cliente> busca = new ArrayList<>();
 
     public DAOCliente(){
         conn = new Conexao().getConexao();
@@ -36,10 +39,9 @@ public class DAOCliente {
     
     public List<Cliente> buscaClientes(){
         String sql = "SELECT * FROM Clientes";
-        List<Cliente> busca = new ArrayList<Cliente>();
         try{
-            stmt = conn.prepareStatement(sql);
-            ResultSet rs = stmt.executeQuery();
+            st = conn.createStatement();
+            rs = st.executeQuery(sql);
             while(rs.next()){
                 Cliente cli = new Cliente();
                 cli.setId(rs.getInt("id"));
@@ -47,7 +49,7 @@ public class DAOCliente {
                 cli.setEmail(rs.getString("email"));
                 busca.add(cli);
             }
-            stmt.close();
+            st.close();
             return busca;            
         }catch(Exception erro){
             throw new RuntimeException("Erro na busca de clientes!", erro);
