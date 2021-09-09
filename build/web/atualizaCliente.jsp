@@ -15,6 +15,7 @@
         String nome = request.getParameter("nomeAtt");
         String email = request.getParameter("emailAtt");
         cld.alteraCliente(id, nome,email);        
+        response.sendRedirect("index.jsp");
     %>
     <body>
 

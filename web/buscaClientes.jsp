@@ -4,7 +4,8 @@
     Author     : Andre Santos
 --%>
 
-<%@page import="java.util.List"%>
+
+<%@page import="sun.util.cldr.CLDRLocaleDataMetaInfo"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="MODEL.Cliente"%>
@@ -12,10 +13,11 @@
 <!DOCTYPE html>
 <html>
     <%
-        ArrayList<Cliente> result = new ArrayList<Cliente>();  
+        
         DAOCliente cld = new DAOCliente();
+        ArrayList<Cliente> result = cld.buscaClientes();  
         Cliente cli = new Cliente();
-        result = cld.buscaClientes();
+        //result = cld.buscaClientes();
     %>
     <body>
         <table border="1">

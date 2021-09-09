@@ -59,12 +59,11 @@ public class DAOCliente {
     public void alteraCliente(int id, String nome, String email){
         String sql = "SELECT * FROM Clientes";
         try{
-            Statement stmt = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
-            ResultSet rs = stmt.executeQuery("SELECT * FROM Clientes");
+            st = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            rs = st.executeQuery(sql);
             while(rs.next()){
                int idDB = rs.getInt("id");
                if(idDB == id){
-                   String nomeBD = rs.getString("nome");
                    rs.updateString("nome", nome);
                    rs.updateString("email", email);
                    rs.updateRow();
@@ -72,6 +71,22 @@ public class DAOCliente {
             }
         }catch(Exception erro){
             throw new RuntimeException("Erro na alteração de clientes!", erro);
+        }
+    }
+    
+    public void deletaCliente(int id){
+        String sql = "SELECT * FROM Clientes";
+        try{
+            st = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            rs = st.executeQuery(sql);
+            while(rs.next()){
+                int idDB = rs.getInt("id");
+                if(idDB == id){
+                    rs.deleteRow();
+                }
+            }
+        }catch(Exception erro){
+            throw new RuntimeException("Erro ao deletar cliente!",erro);
         }
     }
 }

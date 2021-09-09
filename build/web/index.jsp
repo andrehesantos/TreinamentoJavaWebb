@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<link href="style.css" rel="stylesheet" type="text/css"/>
 <!DOCTYPE html>
 <html>
     <head>
@@ -31,7 +32,14 @@
             <input type="text" name="nomeAtt"/><br><br>
             <label>Email: </label>
             <input type="text" name="emailAtt"/><br><br>
-            <input type="submit" value="Envia"/>
+            <input type="submit" value="Atualizar"/><br><br>
+        </form>
+        <form action="deletaCliente.jsp" method="post">
+            <h1>Deleta Cliente</h1>
+            <label>ID: </label>
+            <input type="text" name="idDel"/>
+            <input type="submit" value="Deletar"/>
+            
         </form>
         
     </body>
