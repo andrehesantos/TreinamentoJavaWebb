@@ -25,6 +25,8 @@
                 <th>ID</th>
                 <th>Nome</th>
                 <th>Email</th>
+                <th>Alterar Usuário</th>
+                <th>Deletar Usuário</th>
             </tr>            
             <%
                 for(int i = 0; i < result.size(); i++){
@@ -34,10 +36,13 @@
                 <td><%=cli.getId()%></td>
                 <td><%=cli.getNome()%></td>
                 <td><%=cli.getEmail()%></td>
+                <td><a href='alterarClienteAula.jsp?id=<%=cli.getId()%>&nome=<%=cli.getNome()%>&email=<%=cli.getEmail()%>'>CLIQUE AQUI</a></td>
+                <td><a href='excluiClienteAula.jsp?id=<%=cli.getId()%>&nome=<%=cli.getNome()%>&email=<%=cli.getEmail()%>'>CLIQUE AQUI</a></td>
             </tr>
         <%
                 } 
         %>
         </table>
+        <a href="index.jsp">Voltar para a tela principal.</a>
     </body>
 </html>

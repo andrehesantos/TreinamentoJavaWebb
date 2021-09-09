@@ -89,4 +89,29 @@ public class DAOCliente {
             throw new RuntimeException("Erro ao deletar cliente!",erro);
         }
     }
+    
+    public void atualizaClienteAula(Cliente cliente){
+        try{
+            String sql = "UPDATE Clientes SET nome = ?, email = ? WHERE id = ?";
+            stmt = conn.prepareStatement(sql);
+            stmt.setString(1, cliente.getNome());
+            stmt.setString(2, cliente.getEmail());
+            stmt.setInt(3, cliente.getId());
+            stmt.execute();
+            stmt.close();
+        }catch(Exception erro){
+            throw new RuntimeException("Erro na atualização!",erro);
+        }
+    }
+    
+    public void excluirClienteAula(int valor){
+        try{
+            String sql = "DELETE FROM Clientes WHERE id = "+valor;
+            st = conn.createStatement();
+            st.execute(sql);
+            st.close();
+        }catch(Exception erro){
+            throw new RuntimeException("Erro na exclusão do cliente!", erro);
+        }
+    }
 }
