@@ -114,4 +114,23 @@ public class DAOCliente {
             throw new RuntimeException("Erro na exclusão do cliente!", erro);
         }
     }
+    
+    public ArrayList<Cliente> buscaClientesNome(String nome){
+        String sql = "SELECT * FROM Clientes WHERE nome LIKE '%"+nome+"%'";
+        try{
+            st = conn.createStatement();
+            rs = st.executeQuery(sql);
+            while(rs.next()){
+                Cliente cli = new Cliente();
+                cli.setId(rs.getInt("id"));
+                cli.setNome(rs.getString("nome"));
+                cli.setEmail(rs.getString("email"));
+                busca.add(cli);
+            }
+            st.close();
+            return busca;            
+        }catch(Exception erro){
+            throw new RuntimeException("Erro na busca de clientes!", erro);
+        }
+    }
 }
